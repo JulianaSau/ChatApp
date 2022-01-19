@@ -5,6 +5,7 @@
     margin-top: 0;
     display: flex;
     justify-content: space-between;
+    box-shadow: 30px;
 }
 
 .header-logo {
