@@ -1,6 +1,6 @@
 import React from 'react'
-import "../assets/css/Sidebar.css"
-import photo from "../assets/images/avatar.jpeg"
+import "../../assets/css/Sidebar.css"
+import photo from "../../assets/images/avatar.jpeg"
 
 
 
