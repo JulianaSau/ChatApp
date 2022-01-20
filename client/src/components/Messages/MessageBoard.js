@@ -9,7 +9,21 @@ const MessageBoard = () => {
     <Box width="76vw" height="92vh">
       <Flex flexDir="column">
         <ChatHeader />
-        <MessageCardContainer />
+        <Box
+          m="5px"
+          bg="white"
+          overflowY="hidden"
+          css={{
+            "&::-webkit-scrollbar": {
+              width: "0",
+            },
+            "&::-webkit-scrollbar-track": {
+              width: "0",
+            },
+          }}
+        >
+          <MessageCardContainer />
+        </Box>
         <InputField />
       </Flex>
     </Box>

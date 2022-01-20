@@ -13,7 +13,9 @@ function ChatBox() {
   return (
     <HStack pl="2vw">
       <Avatar size="xs" src={photo} alt="avatar" />
-      <Text color="white">Group Name</Text>
+      <Text color="white" fontSize="12px">
+        Group Name
+      </Text>
     </HStack>
   );
 }
@@ -60,28 +62,38 @@ const SideBar = () => {
         </HStack>
         <HStack>
           <Icon as={FiHash} color="white" />
-          <Text color="white"> Group Chats</Text>
+          <Text color="white" fontSize="13px">
+            {" "}
+            Group Chats
+          </Text>
           <Icon as={FiChevronDown} color="white" />
         </HStack>
         <ChatBox />
         <HStack pl="2vw">
           <Icon as={MdAddBox} color="white" />
-          <Text color="white">Start New Group Chat</Text>
+          <Text color="white" fontSize="12px">
+            Start New Group Chat
+          </Text>
         </HStack>
         <HStack>
           <Icon as={FiMessageSquare} color="white" />
-          <Text color="white"> Direct Messages</Text>
+          <Text color="white" fontSize="13px">
+            {" "}
+            Direct Messages
+          </Text>
           <Icon as={FiChevronDown} color="white" />
         </HStack>
         <ChatBox />
         <HStack pl="2vw">
           <Icon as={MdAddBox} color="white" />
-          <Text color="white">Start New DM</Text>
+          <Text color="white" fontSize="12px">
+            Start New DM
+          </Text>
         </HStack>
         <HStack
           position="absolute"
-          top="80vh"
-          height="8vh"
+          top="90vh"
+          height="6vh"
           p={5}
           borderTopWidth="1px"
           borderTopColor="gray.200"
