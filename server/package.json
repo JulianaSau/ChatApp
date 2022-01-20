@@ -1,7 +1,18 @@
 {
+  "name": "mernchatapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Juliana Sau",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "dependencies": {
+    "centrifuge": "^2.8.4",
     "cors": "^2.8.5",
+    "dotenv": "^14.2.0",
     "express": "^4.17.2",
+    "mongoose": "^6.1.7",
     "nodemon": "^2.0.15",
     "socket.io": "^4.4.1"
   }
