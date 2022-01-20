@@ -11,7 +11,7 @@ import { Avatar, Box, HStack, Icon, Text, VStack } from "@chakra-ui/react";
 
 function ChatBox() {
   return (
-    <HStack pl="2vw">
+    <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
       <Avatar size="xs" src={photo} alt="avatar" />
       <Text color="white" fontSize="12px">
         Group Name
@@ -69,7 +69,7 @@ const SideBar = () => {
           <Icon as={FiChevronDown} color="white" />
         </HStack>
         <ChatBox />
-        <HStack pl="2vw">
+        <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
           <Icon as={MdAddBox} color="white" />
           <Text color="white" fontSize="12px">
             Start New Group Chat
@@ -84,7 +84,7 @@ const SideBar = () => {
           <Icon as={FiChevronDown} color="white" />
         </HStack>
         <ChatBox />
-        <HStack pl="2vw">
+        <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
           <Icon as={MdAddBox} color="white" />
           <Text color="white" fontSize="12px">
             Start New DM
