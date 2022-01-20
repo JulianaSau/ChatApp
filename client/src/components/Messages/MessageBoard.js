@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Flex } from "@chakra-ui/react"
-import ChatHeader from '../components/Chats/ChatHeader';
-import MessageCardContainer from "../components/Messages/MessageCardContainer"
-import InputField from '../components/InputField/InputField';
+import ChatHeader from '../Chats/ChatHeader';
+import MessageCardContainer from "./MessageCardContainer"
+import InputField from '../InputField/InputField';
 
 const MessageBoard = () => {
   return (

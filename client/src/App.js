@@ -1,25 +1,20 @@
 import './App.css';
-import { theme } from './utils/theme';
-import { ChakraProvider } from "@chakra-ui/react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import { Provider } from 'react-redux';
-import store from "./redux/store"
+import {Routes, Route} from "react-router-dom"
 import Home from "./pages/Home"
-import MessageBoard from './pages/MessageBoard';
+import MessageBoard from './components/Messages/MessageBoard';
+import Login from "./pages/Login"
+import SignUp from './pages/SignUp';
+import Chats from './pages/Chats';
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Provider store={store}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/message-board" element={<MessageBoard/>} />
-          </Routes>
-        </Router>
-        </Provider>
-    </ChakraProvider>
-    
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/chats" element={<Chats />} />
+      <Route path="/message-board" element={<MessageBoard />} />
+    </Routes>
   );
 }
 
