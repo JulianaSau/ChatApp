@@ -26,8 +26,12 @@ const SignUp = () => {
   const handleClick = () => setShow(!show);
 
   return (
-    <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
-      <Flex p={8} flex={1} align={"center"} justify={"center"}>
+    <Stack
+      minH={"100vh"}
+      direction={{ base: "column", md: "row" }}
+      bg="#F9F5F6"
+    >
+      <Flex p={8} flex={1} align={"center"} justify={"center"} bg="#F9F5F6">
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Heading fontSize={"2xl"}>Sign up to start chatting</Heading>
           <FormControl id="username">
@@ -93,10 +97,10 @@ const SignUp = () => {
             <Checkbox>
               By checking the box, are agreeing to our terms and conditions
             </Checkbox>
-            <Button colorScheme={"blue"} variant={"solid"}>
+            <Button bg="#AC08D9" variant={"solid"} color="white">
               Sign in
             </Button>
-            <Link alignSelf="center" color={"blue.500"}>
+            <Link alignSelf="center" color="#AC08D9">
               Already have an account? Sign in
             </Link>
           </Stack>

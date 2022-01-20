@@ -18,13 +18,18 @@ const Login = () => {
   const [password, setPassword] = useState();
 
   return (
-    <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+    <Stack
+      minH={"100vh"}
+      direction={{ base: "column", md: "row" }}
+      bg="#F9F5F6"
+    >
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
             <Input
+              borderColor="gray.300"
               type="email"
               value={email}
               placeholder="Enter your Email Address"
@@ -34,6 +39,7 @@ const Login = () => {
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
             <Input
+              borderColor="gray.300"
               type="password"
               value={password}
               placeholder="Enter your password"
@@ -47,12 +53,12 @@ const Login = () => {
               justify={"space-between"}
             >
               <Checkbox>Remember me</Checkbox>
-              <Link color={"blue.500"}>Forgot password?</Link>
+              <Link color="#AC08D9">Forgot password?</Link>
             </Stack>
-            <Button colorScheme={"blue"} variant={"solid"}>
+            <Button bg="#AC08D9" variant={"solid"} color="white">
               Sign in
             </Button>
-            <Link alignSelf="center" color={"blue.500"}>
+            <Link alignSelf="center" color="#AC08D9">
               Dont have an account? Sign up
             </Link>
           </Stack>
