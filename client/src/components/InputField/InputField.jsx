@@ -1,7 +1,7 @@
 // import React from 'react';
 // import { Box, Input } from '@chakra-ui/react';
 import React, { useState } from "react";
-import { Box, Divider, Input, Button, Text } from "@chakra-ui/react";
+import { Box, Divider, Input, Text } from "@chakra-ui/react";
 import { IoFlashOutline, IoSendSharp } from "react-icons/io5";
 import { BsTypeBold, BsLink45Deg } from "react-icons/bs";
 import { FiAtSign, FiItalic } from "react-icons/fi";
@@ -53,19 +53,21 @@ const InputField = () => {
           >
             <FiAtSign />
             <GrAttachment />
-            {input ? (
+            {/* {input ? (
               <Button bg="#00B87C" size="xs">
                 <IoSendSharp color="white" />
               </Button>
-            ) : (
-              <IoSendSharp />
-            )}
+            ) : ( */}
+            <IoSendSharp />
+            {/* )} */}
           </Box>
         </Box>
       </Box>
-      <Text color="gray.400" fontSize="12px">
-        Someone is typing....
-      </Text>
+      {input && (
+        <Text color="gray.400" fontSize="12px">
+          Someone is typing....
+        </Text>
+      )}
     </Box>
   );
 };

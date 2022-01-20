@@ -27,7 +27,7 @@ const SideBar = () => {
         height="8vh"
         p={5}
         borderBottomWidth="1px"
-        borderBottomColor="gray.200"
+        borderBottomColor="#9607BE"
       >
         <Text color="white" fontSize="20px" fontWeight="semi-bold">
           KodeCamp
@@ -38,7 +38,7 @@ const SideBar = () => {
         height="10vh"
         p={5}
         borderBottomWidth="1px"
-        borderBottomColor="gray.200"
+        borderBottomColor="#9607BE"
       >
         <Avatar src={photo} alt="user profile pic" size="md" />
         <VStack align="left" spacing>
@@ -96,7 +96,7 @@ const SideBar = () => {
           height="6vh"
           p={5}
           borderTopWidth="1px"
-          borderTopColor="gray.200"
+          borderTopColor="#9607BE"
         >
           <Icon as={FiLogOut} color="white" />
           <Text color="white" fontWeight="semi-bold">

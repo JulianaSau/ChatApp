@@ -14,8 +14,11 @@ import {
   InputGroup,
 } from "@chakra-ui/react";
 import photo from "../assets/images/image.jpg";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState();
   const [profile_pic, setProfile_pic] = useState();
@@ -97,10 +100,15 @@ const SignUp = () => {
             <Checkbox>
               By checking the box, are agreeing to our terms and conditions
             </Checkbox>
-            <Button bg="#AC08D9" variant={"solid"} color="white">
+            <Button
+              onClick={() => navigate("/chats")}
+              bg="#AC08D9"
+              variant={"solid"}
+              color="white"
+            >
               Sign in
             </Button>
-            <Link alignSelf="center" color="#AC08D9">
+            <Link to="/login" alignSelf="center" color="#AC08D9">
               Already have an account? Sign in
             </Link>
           </Stack>

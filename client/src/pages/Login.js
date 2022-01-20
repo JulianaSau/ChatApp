@@ -12,8 +12,11 @@ import {
   Image,
 } from "@chakra-ui/react";
 import photo from "../assets/images/image.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -55,10 +58,15 @@ const Login = () => {
               <Checkbox>Remember me</Checkbox>
               <Link color="#AC08D9">Forgot password?</Link>
             </Stack>
-            <Button bg="#AC08D9" variant={"solid"} color="white">
+            <Button
+              onClick={() => navigate("/chats")}
+              bg="#AC08D9"
+              variant={"solid"}
+              color="white"
+            >
               Sign in
             </Button>
-            <Link alignSelf="center" color="#AC08D9">
+            <Link to="/signup" alignSelf="center" color="#AC08D9">
               Dont have an account? Sign up
             </Link>
           </Stack>
