@@ -1,20 +1,19 @@
-import React from 'react';
-import { Box, Flex } from "@chakra-ui/react"
-import ChatHeader from '../Chats/ChatHeader';
-import MessageCardContainer from "./MessageCardContainer"
-import InputField from '../InputField/InputField';
+import React from "react";
+import { Box, Flex } from "@chakra-ui/react";
+import ChatHeader from "../Chats/ChatHeader";
+import MessageCardContainer from "./MessageCardContainer";
+import InputField from "../InputField/InputField";
 
 const MessageBoard = () => {
   return (
-    <Box width = "100vw" height = "100vh">
-    <Flex flexDir="column">
-      <ChatHeader />
+    <Box width="76vw" height="92vh">
+      <Flex flexDir="column">
+        <ChatHeader />
         <MessageCardContainer />
-        <InputField/>
+        <InputField />
       </Flex>
     </Box>
-  )
+  );
 };
 
 export default MessageBoard;
-
