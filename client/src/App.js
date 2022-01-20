@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { Provider } from 'react-redux';
 import store from "./redux/store"
 import Home from "./pages/Home"
+import MessageBoard from './pages/MessageBoard';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/message-board" element={<MessageBoard/>} />
           </Routes>
         </Router>
         </Provider>
