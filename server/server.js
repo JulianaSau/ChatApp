@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
 const connectDB = require("./config/db");
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
   res.send("API is Running Successfully");
 });
 
+app.use(cors());
 app.use("/api/user", userRoutes);
 app.use(notFound);
 app.use(errorHandler);

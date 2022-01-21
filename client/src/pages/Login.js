@@ -12,13 +12,70 @@ import {
   Image,
 } from "@chakra-ui/react";
 import photo from "../assets/images/image.jpg";
+import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!email || !password) {
+      toast({
+        title: "Please Fill all the Feilds",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    // console.log(email, password);
+    try {
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:5000/api/user/login",
+        { email, password },
+        config
+      );
+
+      // console.log(JSON.stringify(data));
+      toast({
+        title: "Login Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/chats");
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
+  };
 
   return (
     <Stack
@@ -59,12 +116,24 @@ const Login = () => {
               <Link color="#AC08D9">Forgot password?</Link>
             </Stack>
             <Button
-              onClick={() => navigate("/chats")}
               bg="#AC08D9"
               variant={"solid"}
               color="white"
+              onClick={submitHandler}
+              isLoading={loading}
             >
               Sign in
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="red"
+              width="100%"
+              onClick={() => {
+                setEmail("guest@example.com");
+                setPassword("123456");
+              }}
+            >
+              Get Guest User Credentials
             </Button>
             <Link to="/signup" alignSelf="center" color="#AC08D9">
               Dont have an account? Sign up

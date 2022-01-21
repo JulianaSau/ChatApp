@@ -15,9 +15,12 @@ import {
 } from "@chakra-ui/react";
 import photo from "../assets/images/image.jpg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState();
@@ -25,8 +28,118 @@ const SignUp = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [picLoading, setPicLoading] = useState(false);
 
   const handleClick = () => setShow(!show);
+  const postDetails = (pics) => {
+    setPicLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    console.log(pics);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics); //file to upload
+      data.append("upload_preset", "MeChatApp"); //cloudinaryupload preset name
+      data.append("cloud_name", "trillestbrunette");
+      fetch("https://api.cloudinary.com/v1_1/trillestbrunette/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProfile_pic(data.url.toString());
+          console.log(data.url.toString());
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setPicLoading(false);
+        });
+    } else {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+      return;
+    }
+  };
+
+  const submitHandler = async () => {
+    setPicLoading(true);
+    if (!username || !email || !password || !confirmPassword) {
+      toast({
+        title: "Please Fill all the Fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast({
+        title: "Passwords Do Not Match",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    console.log(username, email, password, profile_pic);
+    try {
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "http://localhost:5000/api/user",
+        {
+          username,
+          email,
+          password,
+          profile_pic,
+        },
+        config
+      );
+      console.log(data);
+      toast({
+        title: "Registration Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setPicLoading(false);
+      navigate("/chats");
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+    }
+  };
 
   return (
     <Stack
@@ -41,9 +154,9 @@ const SignUp = () => {
             <FormLabel>Upload your profile Picture</FormLabel>
             <Input
               type="file"
-              value={profile_pic}
               placeholder="Choose your profile pic"
-              onChange={(e) => setProfile_pic(e.target.value)}
+              accept="image/*"
+              onChange={(e) => postDetails(e.target.files[0])}
             />
           </FormControl>
           <FormControl id="username">
@@ -101,7 +214,8 @@ const SignUp = () => {
               By checking the box, are agreeing to our terms and conditions
             </Checkbox>
             <Button
-              onClick={() => navigate("/chats")}
+              isLoading={picLoading}
+              onClick={submitHandler}
               bg="#AC08D9"
               variant={"solid"}
               color="white"
