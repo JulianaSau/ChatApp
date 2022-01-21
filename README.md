@@ -1,2 +1,2 @@
 # ChatApp
-An application where users can chat in groups
+Read Me Coming soon
