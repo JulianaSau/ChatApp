@@ -23,7 +23,7 @@ const SignUp = () => {
   const toast = useToast();
 
   const [show, setShow] = useState(false);
-  const [username, setUsername] = useState();
+  const [name, setName] = useState();
   const [profile_pic, setProfile_pic] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -78,7 +78,7 @@ const SignUp = () => {
 
   const submitHandler = async () => {
     setPicLoading(true);
-    if (!username || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword) {
       toast({
         title: "Please Fill all the Fields",
         status: "warning",
@@ -99,7 +99,7 @@ const SignUp = () => {
       });
       return;
     }
-    console.log(username, email, password, profile_pic);
+    console.log(name, email, password, profile_pic);
     try {
       const config = {
         headers: {
@@ -110,7 +110,7 @@ const SignUp = () => {
       const { data } = await axios.post(
         "http://localhost:5000/api/user",
         {
-          username,
+          name,
           email,
           password,
           profile_pic,
@@ -163,9 +163,9 @@ const SignUp = () => {
             <FormLabel>Username</FormLabel>
             <Input
               type="text"
-              value={username}
+              value={name}
               placeholder="Enter Your Name"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </FormControl>
           <FormControl id="email">
