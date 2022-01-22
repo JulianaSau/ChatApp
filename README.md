@@ -1,5 +1,4 @@
 # ChatApp
-Read Me Coming soon
 
 > ## Table of contents
 
