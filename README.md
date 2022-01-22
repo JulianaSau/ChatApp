@@ -10,7 +10,7 @@ Read Me Coming soon
 - [Setting up the project](#setting-up-the-project)
   - [Frontend](#frontend)
     - [Build the client](#build-the-client)
-    - [Build the single-spa root](#build-the-single-spa-root)
+<!--     - [Build the single-spa root](#build-the-single-spa-root) -->
     - [Start the client](#start-the-client)
 <!--     - [Start the single-spa root](#start-the-single-spa-root) -->
 <!--     - [Lint the Frontend](#lint-the-frontend) -->
