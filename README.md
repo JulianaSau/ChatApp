@@ -1,8 +1,6 @@
 # ChatApp
 Read Me Coming soon
 
-# YouTube Music-Video Plugin
-
 > ## Table of contents
 
 - [Overview](#overview)
