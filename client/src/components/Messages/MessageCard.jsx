@@ -23,7 +23,7 @@ const MessageCard = ({ name, time, message, avatar }) => {
             {time}
           </Text>
         </Flex>
-        <Box p="3" shadow="lg" rounded="sm" bg="#F9F5F6">
+        <Box p="3" shadow="lg" rounded="md" bg="#F9F5F6">
           <Text fontSize="14px">{message}</Text>
         </Box>
       </Flex>

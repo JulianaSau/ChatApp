@@ -18,7 +18,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/code-beast",
     avatar: `${image}`,
-    index: 1,
+    index: 2,
     isThread: true,
   },
   {
@@ -28,7 +28,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/ryan-florence",
     avatar: `${image}`,
-    index: 1,
+    index: 3,
     isThread: true,
   },
   {
@@ -38,7 +38,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/dan-abramov",
     avatar: `${image}`,
-    index: 1,
+    index: 4,
     isThread: false,
   },
   {
@@ -48,7 +48,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/dan-abramov",
     avatar: `${image}`,
-    index: 1,
+    index: 5,
     isThread: false,
   },
   {
@@ -58,7 +58,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/dan-abramov",
     avatar: `${image}`,
-    index: 1,
+    index: 6,
     isThread: false,
   },
   {
@@ -68,7 +68,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/dan-abramov",
     avatar: `${image}`,
-    index: 1,
+    index: 7,
     isThread: true,
   },
   {
@@ -78,7 +78,7 @@ export const messages = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit placerat tincidunt arcucursus.",
     icon: "https://bit.ly/dan-abramov",
     avatar: `${image}`,
-    index: 1,
+    index: 8,
     isThread: false,
   },
 ];

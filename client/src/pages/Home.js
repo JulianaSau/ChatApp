@@ -38,7 +38,7 @@ const Home = () => {
       </Box>
       <Flex mx="5vw" pt="2vh">
         <Text zIndex="10" color="white" fontWeight="500" fontSize="30px">
-          MeChats
+          Labrynth
         </Text>
         <Spacer />
         <HStack spacing="10px">
