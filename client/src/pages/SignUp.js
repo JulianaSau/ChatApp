@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Checkbox,
@@ -21,6 +21,14 @@ import { useToast } from "@chakra-ui/react";
 const SignUp = () => {
   const navigate = useNavigate();
   const toast = useToast();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) {
+      navigate("/chats");
+    }
+  }, [navigate]);
 
   const [show, setShow] = useState(false);
   const [name, setName] = useState();

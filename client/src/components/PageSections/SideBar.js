@@ -6,8 +6,17 @@ import {
   FiHash,
   FiLogOut,
 } from "react-icons/fi";
-import { MdAddBox } from "react-icons/md";
-import { Avatar, Box, HStack, Icon, Text, VStack } from "@chakra-ui/react";
+import { MdAddBox, MdAdd } from "react-icons/md";
+import {
+  Avatar,
+  Box,
+  HStack,
+  Icon,
+  Spacer,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function ChatBox() {
   return (
@@ -21,6 +30,8 @@ function ChatBox() {
 }
 
 const SideBar = () => {
+  const navigate = useNavigate();
+
   return (
     <Box bg="#70058F" width="18vw">
       <HStack
@@ -67,6 +78,13 @@ const SideBar = () => {
             Group Chats
           </Text>
           <Icon as={FiChevronDown} color="white" />
+          <Spacer />
+          <Icon
+            _hover={{ cursor: "pointer" }}
+            onClick={() => navigate("/dms/dms-browser")}
+            as={MdAdd}
+            color="white"
+          />
         </HStack>
         <ChatBox />
         <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
@@ -82,6 +100,13 @@ const SideBar = () => {
             Direct Messages
           </Text>
           <Icon as={FiChevronDown} color="white" />
+          <Spacer />
+          <Icon
+            _hover={{ cursor: "pointer" }}
+            onClick={() => navigate("/dms/dms-browser")}
+            as={MdAdd}
+            color="white"
+          />
         </HStack>
         <ChatBox />
         <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
