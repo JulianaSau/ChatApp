@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Checkbox,
@@ -22,13 +22,13 @@ const SignUp = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-    if (user) {
-      navigate("/chats");
-    }
-  }, [navigate]);
+  //   if (user) {
+  //     navigate("/chats");
+  //   }
+  // }, [navigate]);
 
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
