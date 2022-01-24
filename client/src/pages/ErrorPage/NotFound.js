@@ -26,7 +26,7 @@ const NotFound = () => {
 
           <Button
             as={Link}
-            to="/chats"
+            to="/home"
             borderRadius="30px"
             pl={10}
             pr={10}

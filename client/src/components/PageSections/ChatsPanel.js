@@ -26,10 +26,12 @@ const ChatsPanel = () => {
   return (
     <Box
       bg="#70058F"
-      width="6vw"
+      minWidth="6vw"
+      width={["6vw", "7vw", "7vw", "6vw"]}
       height="100vh"
       borderRightWidth="0.1px"
       borderRightColor="#9607BE"
+      flexShrink={0}
     >
       <VStack pt="2vh" spacing="2vh">
         <Box

@@ -41,14 +41,14 @@ const ProfileModal = ({ user, children }) => {
           <ModalCloseButton />
           <ModalBody>
             <Avatar
-              src={user.profile_pic}
-              name={user.name}
+              src={user?.profile_pic}
+              name={user?.name}
               width="100%"
               height="4%"
               borderRadius="5px"
             />
-            <Text>UserName: {user.name}</Text>
-            <Text>Email: {user.email}</Text>
+            <Text>UserName: {user?.name}</Text>
+            <Text>Email: {user?.email}</Text>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" variant="ghost" onClick={onClose}>

@@ -12,10 +12,11 @@ import {
 import React from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import { MdArrowDropDown } from "react-icons/md";
-import { getUser } from "../../../utils/useToken";
+import useAuth from "../../../utils/useAuth";
 import ProfileModal from "../../Profile/ProfileModal";
 
 const TopBar = () => {
+  const { getUser } = useAuth();
   const user = getUser();
   console.log(user);
 

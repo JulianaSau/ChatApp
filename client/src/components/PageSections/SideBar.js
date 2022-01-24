@@ -47,7 +47,11 @@ const SideBar = () => {
 
   return (
     <>
-      <Box bg="#70058F" width="18vw">
+      <Box
+        bg="#70058F"
+        width="18vw"
+        display={["none", "none", "block", "block"]}
+      >
         <HStack
           height="8vh"
           p={5}
