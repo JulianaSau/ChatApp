@@ -14,11 +14,18 @@ import SearchBar from "./SearchBar/SearchBar";
 import { MdArrowDropDown } from "react-icons/md";
 import useAuth from "../../../utils/useAuth";
 import ProfileModal from "../../Profile/ProfileModal";
+import { useNavigate } from "react-router-dom";
 
 const TopBar = () => {
-  const { getUser } = useAuth();
+  const navigate = useNavigate();
+  const { getUser, removeUser } = useAuth();
   const user = getUser();
   console.log(user);
+
+  const logoutHandler = () => {
+    removeUser();
+    navigate("/");
+  };
 
   return (
     <Flex height="8vh" my="auto" alignItems="center">
@@ -45,7 +52,7 @@ const TopBar = () => {
             <MenuItem>My Profile</MenuItem>
           </ProfileModal>
           <MenuDivider />
-          <MenuItem>Log Out</MenuItem>
+          <MenuItem onClick={logoutHandler}>Log Out</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

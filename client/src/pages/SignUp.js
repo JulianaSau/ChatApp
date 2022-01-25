@@ -167,7 +167,7 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        setToken();
+        setToken(data);
         setPicLoading(false);
         navigate("/home");
       } catch (error) {

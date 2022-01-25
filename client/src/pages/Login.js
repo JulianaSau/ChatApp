@@ -100,7 +100,7 @@ const Login = () => {
           isClosable: true,
           position: "bottom",
         });
-        setToken();
+        setToken(data);
         setLoading(false);
         navigate("/home");
       } catch (error) {
