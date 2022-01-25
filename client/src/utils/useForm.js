@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 
-export const useForm = (options) => {
+const useForm = (options) => {
   //manages state of the whole form
   const [data, setData] = useState(options?.initialValues || {});
   //to accomodate errors
@@ -82,3 +82,5 @@ export const useForm = (options) => {
     errors,
   };
 };
+
+export default useForm;
