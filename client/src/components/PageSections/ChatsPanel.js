@@ -9,7 +9,7 @@ const ChatIcons = () => {
   const navigate = useNavigate();
   return (
     <Box
-      onClick={() => navigate("/chats")}
+      onClick={() => navigate("/home")}
       borderWidth="2px"
       borderColor="#9607BE"
       borderRadius="10px"

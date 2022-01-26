@@ -1,7 +1,7 @@
 import {
   Button,
-  FormControl,
-  FormLabel,
+  Container,
+  HStack,
   Input,
   Modal,
   ModalBody,
@@ -12,8 +12,14 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import React from "react";
+import SelectedUserTag from "./SelectedUserTag";
+import SearchUsersDropdown from "./SearchUsersDropdown";
+import useAuth from "../../utils/useAuth";
 
-const CreateDmModal = ({ onClose, isOpen }) => {
+const AddUsersModal = ({ onClose, isOpen }) => {
+  const { getUser } = useAuth();
+  const user = getUser();
+  console.log(user);
   return (
     <Modal
       isCentered
@@ -23,13 +29,18 @@ const CreateDmModal = ({ onClose, isOpen }) => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create New DM</ModalHeader>
+        <ModalHeader>Add Users</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <FormControl>
-            <FormLabel>Search User</FormLabel>
-            <Input placeholder="Search user by name or email" />
-          </FormControl>
+          <HStack>
+            <Input placeholder="Search user by name or email"></Input>
+            <Button>Search</Button>
+          </HStack>
+
+          <SearchUsersDropdown />
+          {/* <Container>
+            <SelectedUserTag selectedUser={user} />
+          </Container> */}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>
@@ -42,4 +53,4 @@ const CreateDmModal = ({ onClose, isOpen }) => {
   );
 };
 
-export default CreateDmModal;
+export default AddUsersModal;

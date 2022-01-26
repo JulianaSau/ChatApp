@@ -6,13 +6,11 @@ import {
   Input,
   Spacer,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import TopBar from "../../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../../components/PageSections/ChatsPanel";
 import React from "react";
 import DMCard from "./DMCard";
-import CreateDmModal from "../../components/Chats/CreateDmModal";
 
 const AllDMsHeader = () => {
   return (
@@ -31,7 +29,6 @@ const AllDMsHeader = () => {
 };
 
 const AllDMs = () => {
-  const { onOpen, onClose, isOpen } = useDisclosure();
   return (
     <>
       <Flex>
@@ -43,9 +40,7 @@ const AllDMs = () => {
             <HStack px="1.5vw" py="1vh">
               <Input placeholder="Search for a conversation or user..." />
               <Spacer />
-              <Button px="3vw" onClick={onOpen}>
-                Create New DM
-              </Button>
+              <Button px="3vw">Create New DM</Button>
             </HStack>
             <Flex flexDir="column" className="DMs-Container" py="1.5rem">
               <Text pl="1.5rem" py="1vh" fontWeight="semibold">
@@ -56,7 +51,6 @@ const AllDMs = () => {
           </Box>
         </Flex>
       </Flex>
-      <CreateDmModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

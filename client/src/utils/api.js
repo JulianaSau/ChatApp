@@ -18,12 +18,12 @@ const api = axios.create({ ...apiConfig });
 
 class APIServices {
   //example
-  async loginUser(data) {
-    return api.post(`/api/user/login`, data);
+  async getAllUsers(data) {
+    return api.get(`/api/user`, data);
   }
 
-  async registerUser(data) {
-    return api.post(`/api/user`, data);
+  async searchUsers(query) {
+    return api.post(`/api/user/?search=${query}`);
   }
 }
 

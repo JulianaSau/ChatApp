@@ -18,8 +18,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import CreateDmModal from "../Chats/CreateDmModal";
-import CreateGroupChatModal from "../Chats/CreateGroupChatModal";
+import CreateGroupChatModal from "../CreateGroupChat/CreateGroupChatModal";
 
 function ChatBox() {
   return (
@@ -34,16 +33,7 @@ function ChatBox() {
 
 const SideBar = () => {
   const navigate = useNavigate();
-  const {
-    onOpen: onCreateDMOpen,
-    onClose: onCloseDM,
-    isOpen: isCreateDMOpen,
-  } = useDisclosure();
-  const {
-    onOpen: onCreateGroupChatOpen,
-    onClose: onCloseGroupChat,
-    isOpen: isCreateGroupChatOpen,
-  } = useDisclosure();
+  const { onOpen, onClose, isOpen } = useDisclosure();
 
   return (
     <>
@@ -108,7 +98,7 @@ const SideBar = () => {
           <HStack
             pl="2vw"
             _hover={{ bg: "#277DFF", cursor: "pointer" }}
-            onClick={() => onCreateGroupChatOpen()}
+            onClick={() => onOpen()}
           >
             <Icon as={MdAddBox} color="white" />
             <Text color="white" fontSize="12px">
@@ -134,7 +124,7 @@ const SideBar = () => {
           <HStack
             pl="2vw"
             _hover={{ bg: "#277DFF", cursor: "pointer" }}
-            onClick={() => onCreateDMOpen()}
+            onClick={() => navigate("/dms/dms-browser")}
           >
             <Icon as={MdAddBox} color="white" />
             <Text color="white" fontSize="12px">
@@ -156,11 +146,7 @@ const SideBar = () => {
           </HStack>
         </VStack>
       </Box>
-      <CreateDmModal onClose={onCloseDM} isOpen={isCreateDMOpen} />
-      <CreateGroupChatModal
-        onClose={onCloseGroupChat}
-        isOpen={isCreateGroupChatOpen}
-      />
+      <CreateGroupChatModal onCloseModal={onClose} isOpenModal={isOpen} />
     </>
   );
 };
