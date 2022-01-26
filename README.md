@@ -6,21 +6,21 @@
 - [Project Features](#project-features)
 - [Technologies](#technologies)
 - [Repo Setup](#repo-setup)
-- [Setting up the project](#setting-up-the-project)
-  - [Frontend](#frontend)
-    - [Build the client](#build-the-client)
+<!-- - [Setting up the project](#setting-up-the-project) -->
+<!--   - [Frontend](#frontend) -->
+<!--     - [Build the client](#build-the-client) -->
 <!--     - [Build the single-spa root](#build-the-single-spa-root) -->
-    - [Start the client](#start-the-client)
+<!--     - [Start the client](#start-the-client) -->
 <!--     - [Start the single-spa root](#start-the-single-spa-root) -->
 <!--     - [Lint the Frontend](#lint-the-frontend) -->
 <!--     - [Running Tests and generating test coverage report](#running-tests-and-generating-test-coverage-report) -->
-  - [Backend](#backend)
-    - [Run the Express Server](#run-the-django-server)
+<!--   - [Backend](#backend) -->
+<!--     - [Run the Express Server](#run-the-django-server) -->
 <!--     - [Pre-commit and lint the Backend](#pre-commit-and-lint-the-backend) -->
 <!--     - [Running Tests](#running-tests) -->
 - [Links to the project](#links-to-the-project)
 - [Status](#status)
-- [Contributing to the project](#contributing-to-the-project)
+<!-- - [Contributing to the project](#contributing-to-the-project) -->
 
 #
 
