@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import photo from "../../assets/images/avatar.jpeg";
 import {
   FiChevronDown,
@@ -19,21 +19,32 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import CreateGroupChatModal from "../CreateGroupChat/CreateGroupChatModal";
+import useAuth from "../../utils/useAuth";
+import { getSender } from "../../config/ChatsLogics";
+import ChatLoading from "../Chats/ChatLoading";
 
-function ChatBox() {
+function ChatBox({ chat, loggedUser }) {
   return (
-    <HStack pl="2vw" _hover={{ bg: "#277DFF", cursor: "pointer" }}>
+    <HStack pl="2vw" py={1} _hover={{ bg: "#277DFF", cursor: "pointer" }}>
       <Avatar size="xs" src={photo} alt="avatar" />
       <Text color="white" fontSize="12px">
-        Group Name
+        {!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.chatName}
       </Text>
     </HStack>
   );
 }
 
-const SideBar = () => {
+const SideBar = ({ loggedUser }) => {
   const navigate = useNavigate();
   const { onOpen, onClose, isOpen } = useDisclosure();
+  const { getUser } = useAuth();
+  const user = getUser();
+  const [chats, setChats] = useState([]);
+  useEffect(() => {
+    setChats(JSON.parse(localStorage.getItem("AllChats")));
+  }, []);
+
+  console.log("chats", chats);
 
   return (
     <>
@@ -59,10 +70,10 @@ const SideBar = () => {
           borderBottomWidth="1px"
           borderBottomColor="#9607BE"
         >
-          <Avatar src={photo} alt="user profile pic" size="md" />
+          <Avatar src={user.profile_pic} alt="user profile pic" size="md" />
           <VStack align="left" spacing>
             <Text color="white" fontSize="13px" isTruncated>
-              Username: jayjay
+              Username: {user.name}
             </Text>
             <Text
               color="white"
@@ -94,7 +105,15 @@ const SideBar = () => {
               color="white"
             />
           </HStack>
-          <ChatBox />
+          {chats ? (
+            <Box>
+              {chats.map((chat) => (
+                <ChatBox chat={chat} loggedUser={loggedUser} />
+              ))}
+            </Box>
+          ) : (
+            <ChatLoading />
+          )}
           <HStack
             pl="2vw"
             _hover={{ bg: "#277DFF", cursor: "pointer" }}
@@ -120,7 +139,15 @@ const SideBar = () => {
               color="white"
             />
           </HStack>
-          <ChatBox />
+          {chats ? (
+            <Box>
+              {chats.map((chat) => (
+                <ChatBox chat={chat} loggedUser={loggedUser} />
+              ))}
+            </Box>
+          ) : (
+            <ChatLoading />
+          )}
           <HStack
             pl="2vw"
             _hover={{ bg: "#277DFF", cursor: "pointer" }}
