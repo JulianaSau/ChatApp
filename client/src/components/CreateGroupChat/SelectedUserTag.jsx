@@ -1,10 +1,9 @@
 import { Avatar, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
 import React from "react";
-import "./SelectedUserTag.css";
 
-const SelectedUserTag = ({ selectedUser, onClose }) => {
+const SelectedUserTag = ({ selectedUser, handleFunction }) => {
   return (
-    <Tag size="lg" colorScheme="red" borderRadius="full">
+    <Tag size="lg" colorScheme="purple" borderRadius="full" m={1}>
       <Avatar
         src={selectedUser.profile_pic}
         size="xs"
@@ -13,7 +12,7 @@ const SelectedUserTag = ({ selectedUser, onClose }) => {
         mr={2}
       />
       <TagLabel>{selectedUser.name}</TagLabel>
-      <TagCloseButton />
+      <TagCloseButton onClick={handleFunction} />
     </Tag>
   );
 };

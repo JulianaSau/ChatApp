@@ -14,11 +14,12 @@ import {
   useDisclosure,
   Switch,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import AddUsersModal from "./AddUsersModal";
 
 const CreateGroupChatModal = ({ onCloseModal, isOpenModal }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [groupChatName, setGroupChatName] = useState("");
   return (
     <>
       <Modal
@@ -36,7 +37,11 @@ const CreateGroupChatModal = ({ onCloseModal, isOpenModal }) => {
             <VStack spacing={4}>
               <FormControl>
                 <FormLabel>Group Name</FormLabel>
-                <Input placeholder="Search user by name or email" />
+                <Input
+                  placeholder="Search user by name or email"
+                  value={groupChatName}
+                  onChange={(e) => setGroupChatName(e.target.value)}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Group Description</FormLabel>
@@ -65,7 +70,11 @@ const CreateGroupChatModal = ({ onCloseModal, isOpenModal }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <AddUsersModal onClose={onClose} isOpen={isOpen} />
+      <AddUsersModal
+        onClose={onClose}
+        isOpen={isOpen}
+        groupChatName={groupChatName}
+      />
     </>
   );
 };
