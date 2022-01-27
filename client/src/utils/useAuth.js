@@ -1,6 +1,17 @@
 import { useState } from "react";
 
 export default function useAuth() {
+  const getChats = () => {
+    const chats = JSON.parse(localStorage.getItem("AllChats"));
+    // setChats(chats);
+    return chats;
+  };
+  const [chats, setChats] = useState(getChats());
+
+  const saveChats = (chats) => {
+    setChats(chats);
+  };
+
   const getToken = () => {
     const userInfo = localStorage.getItem("userInfo");
     const userToken = JSON.parse(userInfo);
@@ -30,6 +41,8 @@ export default function useAuth() {
     token,
     removeUser,
     getUser,
+    getChats,
+    setChats: saveChats,
   };
 }
 

@@ -16,7 +16,6 @@ const userReducer = (state = initialState, action) => {
   switch (type) {
     // STEP THREE
     // A new state is returned with the data from the endpoint
-    // The GET USERS case is handled here
     case SEARCH_USERS_START:
       return {
         ...state,
