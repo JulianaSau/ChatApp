@@ -13,6 +13,7 @@ import {
   VStack,
   useDisclosure,
   Switch,
+  Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import AddUsersModal from "./AddUsersModal";
@@ -35,22 +36,30 @@ const CreateGroupChatModal = ({ onCloseModal, isOpenModal }) => {
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
+              <Text>
+                A Channel is where one can chat with several people at the same
+                time
+              </Text>
               <FormControl>
                 <FormLabel>Group Name</FormLabel>
                 <Input
-                  placeholder="Search user by name or email"
+                  placeholder="Group Name"
                   value={groupChatName}
                   onChange={(e) => setGroupChatName(e.target.value)}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Group Description</FormLabel>
-                <Input placeholder="Search user by name or email" />
+                <Input placeholder="Group Description" />
               </FormControl>
               <FormControl d="flex" alignItems="center">
-                <FormLabel htmlFor="private">Make Private</FormLabel>
+                <FormLabel htmlFor="private">Make Channel Private</FormLabel>
                 <Switch id="private" />
               </FormControl>
+              <Text>
+                Please note that it is not possible to change a channel back to
+                public if you choose to make it public
+              </Text>
             </VStack>
           </ModalBody>
           <ModalFooter>

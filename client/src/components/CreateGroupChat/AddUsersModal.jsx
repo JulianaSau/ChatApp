@@ -111,7 +111,7 @@ const AddUsersModal = ({ onClose, isOpen, groupChatName }) => {
         `/api/chat/group`,
         {
           name: groupChatName,
-          users: JSON.stringify(selectedUsers.map((u) => u._id)),
+          users: JSON.stringify(selectedUsers.map((user) => user._id)),
         },
         config
       );
@@ -135,35 +135,6 @@ const AddUsersModal = ({ onClose, isOpen, groupChatName }) => {
       });
     }
   };
-
-  // const accessChat = async (userId) => {
-  //   console.log(userId);
-
-  //   try {
-  //     setLoadingChat(true);
-  //     const config = {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //         Authorization: `Bearer ${user.token}`,
-  //       },
-  //     };
-  //     const { data } = await axios.post(`/api/chat`, { userId }, config);
-
-  //     if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
-  //     setSelectedChat(data);
-  //     setLoadingChat(false);
-  //     onClose();
-  //   } catch (error) {
-  //     toast({
-  //       title: "Error fetching the chat",
-  //       description: error.message,
-  //       status: "error",
-  //       duration: 5000,
-  //       isClosable: true,
-  //       position: "bottom-left",
-  //     });
-  //   }
-  // };
 
   return (
     <Modal
@@ -193,21 +164,23 @@ const AddUsersModal = ({ onClose, isOpen, groupChatName }) => {
               />
             ))}
           </Box>
-          <List px={6} py={4}>
-            <Box as="span">{"   "}</Box>
-            {loading ? (
-              <ChatLoading />
-            ) : (
-              searchResult?.map((user) => (
-                <UsersListTag
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => handleSelectedUsers(user)}
-                />
-              ))
-            )}
-            {loadingChat && <Spinner ml="auto" d="flex" />}
-          </List>
+          {searchResult && (
+            <List px={6} py={4}>
+              <Box as="span">{"   "}</Box>
+              {loading ? (
+                <ChatLoading />
+              ) : (
+                searchResult?.map((user) => (
+                  <UsersListTag
+                    key={user._id}
+                    user={user}
+                    handleFunction={() => handleSelectedUsers(user)}
+                  />
+                ))
+              )}
+              {loadingChat && <Spinner ml="auto" d="flex" />}
+            </List>
+          )}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>

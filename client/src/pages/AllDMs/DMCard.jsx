@@ -3,7 +3,7 @@ import chatIcon from "../../assets/images/avatar.jpeg";
 import React from "react";
 import { motion } from "framer-motion";
 
-const DMCard = () => {
+const DMCard = ({ handleClick }) => {
   const MotionBox = motion(Box);
 
   return (
@@ -18,6 +18,7 @@ const DMCard = () => {
         // borderBottomColor: "none",
         // borderTopColor: "none",
       }}
+      onClick={handleClick}
     >
       <HStack pl="1.5rem">
         <Avatar src={chatIcon} alt="chat Icon" size="lg" />

@@ -11,6 +11,7 @@ import TopBar from "../../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../../components/PageSections/ChatsPanel";
 import React from "react";
 import DMCard from "./DMCard";
+import axios from "axios";
 
 const AllDMsHeader = () => {
   return (
@@ -29,6 +30,34 @@ const AllDMsHeader = () => {
 };
 
 const AllDMs = () => {
+  // const accessChat = async (userId) => {
+  //   console.log(userId);
+
+  //   try {
+  //     setLoadingChat(true);
+  //     const config = {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //         Authorization: `Bearer ${user.token}`,
+  //       },
+  //     };
+  //     const { data } = await axios.post(`/api/chat`, { userId }, config);
+
+  //     if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+  //     setSelectedChat(data);
+  //     setLoadingChat(false);
+  //     onClose();
+  //   } catch (error) {
+  //     toast({
+  //       title: "Error fetching the chat",
+  //       description: error.message,
+  //       status: "error",
+  //       duration: 5000,
+  //       isClosable: true,
+  //       position: "bottom-left",
+  //     });
+  //   }
+  // };
   return (
     <>
       <Flex>
@@ -46,7 +75,9 @@ const AllDMs = () => {
               <Text pl="1.5rem" py="1vh" fontWeight="semibold">
                 Today
               </Text>
-              <DMCard />
+              <DMCard
+              // handleClick={() =>accessChat(chat)}
+              />
             </Flex>
           </Box>
         </Flex>

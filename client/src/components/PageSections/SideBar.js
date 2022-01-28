@@ -107,9 +107,11 @@ const SideBar = ({ loggedUser }) => {
           </HStack>
           {chats ? (
             <Box>
-              {chats.map((chat) => (
-                <ChatBox chat={chat} loggedUser={loggedUser} />
-              ))}
+              {chats
+                .filter((chat) => chat.isGroupChat === true)
+                .map((chat) => (
+                  <ChatBox chat={chat} loggedUser={loggedUser} />
+                ))}
             </Box>
           ) : (
             <ChatLoading />
@@ -141,9 +143,11 @@ const SideBar = ({ loggedUser }) => {
           </HStack>
           {chats ? (
             <Box>
-              {chats.map((chat) => (
-                <ChatBox chat={chat} loggedUser={loggedUser} />
-              ))}
+              {chats
+                .filter((chat) => chat.isGroupChat === false)
+                .map((chat) => (
+                  <ChatBox chat={chat} loggedUser={loggedUser} />
+                ))}
             </Box>
           ) : (
             <ChatLoading />

@@ -14,7 +14,7 @@
     "axios": "^0.25.0",
     "centrifuge": "^2.8.4",
     "concurrently": "^7.0.0",
-    "emoji-picker-react": "^3.5.0",
+    "emoji-mart": "^3.0.1",
     "framer-motion": "^4",
     "prettier": "^2.5.1",
     "react": "^17.0.2",

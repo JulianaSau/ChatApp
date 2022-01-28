@@ -1,15 +1,18 @@
 import { useState } from "react";
 
 export default function useAuth() {
+  const [chats, setChats] = useState(
+    JSON.parse(localStorage.getItem("AllChats") || [])
+  );
   const getChats = () => {
     const chats = JSON.parse(localStorage.getItem("AllChats"));
-    // setChats(chats);
+    setChats(chats);
     return chats;
   };
-  const [chats, setChats] = useState(getChats());
 
   const saveChats = (chats) => {
     setChats(chats);
+    localStorage.setItem("AllChats", JSON.stringify(chats));
   };
 
   const getToken = () => {
@@ -42,6 +45,7 @@ export default function useAuth() {
     removeUser,
     getUser,
     getChats,
+    chats,
     setChats: saveChats,
   };
 }
