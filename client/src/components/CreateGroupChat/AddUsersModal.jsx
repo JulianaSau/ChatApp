@@ -11,7 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Spinner,
+  // Spinner,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -31,7 +31,7 @@ const AddUsersModal = ({ onClose, isOpen, groupChatName }) => {
   const [searchResult, setSearchResult] = useState([]);
   // const [selectedChat, setSelectedChat] = useState();
   const [selectedUsers, setSelectedUsers] = useState([]);
-  const [loadingChat, setLoadingChat] = useState(false);
+  // const [loadingChat, setLoadingChat] = useState(false);
 
   const handleSelectedUsers = (userToAdd) => {
     if (selectedUsers.includes(userToAdd)) {
@@ -178,7 +178,7 @@ const AddUsersModal = ({ onClose, isOpen, groupChatName }) => {
                   />
                 ))
               )}
-              {loadingChat && <Spinner ml="auto" d="flex" />}
+              {/* {loadingChat && <Spinner ml="auto" d="flex" />} */}
             </List>
           )}
         </ModalBody>

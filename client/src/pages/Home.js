@@ -1,16 +1,19 @@
-import { Flex, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  // useToast
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import SideBar from "../components/PageSections/SideBar";
 import TopBar from "../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../components/PageSections/ChatsPanel";
 import MessageBoard from "../components/MessageBoard/MessageBoard";
 // import axios from "axios";
-import useAuth from "../utils/useAuth";
+// import useAuth from "../utils/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { handleGetAllChats } from "../redux/appActions/chatActions";
 
 const HomePage = ({ fetchAgain }) => {
-  const { getUser, token } = useAuth();
+  // const { getUser, token } = useAuth();
   // const user = getUser();
   const [loggedUser, setLoggedUser] = useState();
   const [chats, setChats] = useState();

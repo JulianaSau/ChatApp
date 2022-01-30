@@ -11,11 +11,11 @@ import "emoji-mart/css/emoji-mart.css";
 const InputField = () => {
   const [input, setInput] = useState(false);
   const [emoji, setEmoji] = useState(false);
-  const [OnClick, setOnClick] = useState(false);
-  const togglingDisplay = () => {
-    setOnClick(false);
-    setEmoji(false);
-  };
+  // const [OnClick, setOnClick] = useState(false);
+  // const togglingDisplay = () => {
+  //   setOnClick(false);
+  //   setEmoji(false);
+  // };
   return (
     <>
       <Box p={3}>

@@ -11,7 +11,7 @@ import TopBar from "../../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../../components/PageSections/ChatsPanel";
 import React from "react";
 import DMCard from "./DMCard";
-import axios from "axios";
+// import axios from "axios";
 
 const AllDMsHeader = () => {
   return (
