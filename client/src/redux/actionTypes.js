@@ -12,3 +12,6 @@ export const CREATE_DM = "CREATE_DM";
 export const CREATE_GROUP = "CREATE_GROUP";
 export const ADD_USER_TO_ROOM = "ADD_USER_TO_ROOM";
 export const REMOVE_USER_FROM_ROOM = "REMOVE_USER_FROM_ROOM";
+
+export const GET_ALL_CHATS = "GET_ALL_CHATS";
+export const SELECTED_CHAT = "SELECTED_CHAT";

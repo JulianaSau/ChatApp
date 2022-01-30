@@ -50,11 +50,40 @@ const accessChat = asyncHandler(async (req, res) => {
   }
 });
 
+const getChatDetails = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  if (!id) {
+    console.log("ChatId parameter not sent with request");
+    return res.sendStatus(400);
+  }
+
+  var isChat = await Chat.find({
+    "chat._id": { $eq: req.id },
+    // isGroupChat: false,
+    $and: [{ "chat.users": { $elemMatch: { $eq: req.user._id } } }],
+  }) //logic to populate isChat variable with the info of users and the latest chat message
+    .populate("users", "-password")
+    .populate("latestMessage");
+
+  //to populate the isChat var with info of user who sent the latest message
+  isChat = await User.populate(isChat, {
+    path: "latestMessage.sender",
+    select: "name, profile_pic, email",
+  });
+
+  if (isChat.length > 0) {
+    res.send(isChat[0]);
+  } else {
+    throw new Error("Couldnt find chat");
+  }
+});
+
 const fetchChats = asyncHandler(async (req, res) => {
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
-      .populate("groupAdmin", "password")
+      .populate("groupAdmin", "-password")
       .populate("latestMessage")
       .sort({ updatedAt: -1 })
       .then(async (results) => {
@@ -179,4 +208,5 @@ module.exports = {
   renameGroup,
   addToGroup,
   removeFromGroup,
+  getChatDetails,
 };

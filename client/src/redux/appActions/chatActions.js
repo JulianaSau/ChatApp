@@ -4,7 +4,24 @@ import {
   CREATE_GROUP,
   ADD_USER_TO_ROOM,
   REMOVE_USER_FROM_ROOM,
-} from "../ActionTypes";
+  GET_ALL_CHATS,
+  SELECTED_CHAT,
+} from "../actionTypes";
+
+//Creating a DM
+const getAllChats = (allChats) => ({
+  type: GET_ALL_CHATS,
+  payload: allChats,
+});
+
+export const handleGetAllChats = () => async (dispatch) => {
+  try {
+    const { data } = await APIServices.getAllChats();
+    await dispatch(getAllChats(data));
+  } catch (error) {
+    console.log(`Error from handleGetAllChats: ${error}`);
+  }
+};
 
 //Creating a DM
 const createDM = (createDMData) => ({
@@ -64,4 +81,11 @@ export const handleRemoveUserFromRoom = (userToRemove) => async (dispatch) => {
   } catch (error) {
     console.log(`Error from handleRemoveUserFromRoom: ${error}`);
   }
+};
+
+export const handleSelectedChat = (selectedChat) => {
+  return {
+    type: SELECTED_CHAT,
+    payload: selectedChat,
+  };
 };

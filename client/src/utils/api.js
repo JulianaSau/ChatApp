@@ -2,6 +2,14 @@ import axios from "axios";
 
 const baseURL = "http://localhost:5000"; // base url for all endpoints
 
+const getToken = () => {
+  const userInfo = localStorage.getItem("userInfo");
+  const userToken = JSON.parse(userInfo);
+  return userToken?.token;
+};
+
+const token = getToken();
+
 const apiConfig = {
   baseURL,
   timeout: 30000000,
@@ -35,11 +43,15 @@ class APIServices {
   }
 
   async getAllChats() {
-    return api.get(`/api/chat/`);
+    return api.get(`/api/chat`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 
   async createDM(room_data) {
-    return api.post(`/api/chat/`, room_data);
+    return api.post(`/api/chat`, room_data);
   }
 
   async createGroup(room_data) {
