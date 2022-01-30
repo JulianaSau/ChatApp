@@ -4,47 +4,55 @@ import SideBar from "../components/PageSections/SideBar";
 import TopBar from "../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../components/PageSections/ChatsPanel";
 import MessageBoard from "../components/MessageBoard/MessageBoard";
-import axios from "axios";
+// import axios from "axios";
 import useAuth from "../utils/useAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { handleGetAllChats } from "../redux/appActions/chatActions";
 
 const HomePage = ({ fetchAgain }) => {
   const { getUser, token } = useAuth();
-  const user = getUser();
+  // const user = getUser();
   const [loggedUser, setLoggedUser] = useState();
   const [chats, setChats] = useState();
 
   // const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
-  const toast = useToast();
+  // const toast = useToast();
+  const dispatch = useDispatch();
 
-  const fetchChats = async () => {
+  const fetchChats = () => {
     // console.log(user._id);
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const { data } = await axios.get("/api/chat", config);
-      setChats(data);
-      console.log(data);
-      localStorage.setItem("AllChats", JSON.stringify(data));
-    } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: "Failed to Load the chats",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-left",
-      });
-    }
+    // try {
+    //   const config = {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   };
+    //   const { data } = await axios.get("/api/chat", config);
+    //   setChats(data);
+    //   console.log(data);
+    //   localStorage.setItem("AllChats", JSON.stringify(data));
+    // } catch (error) {
+    //   toast({
+    //     title: "Error Occured!",
+    //     description: "Failed to Load the chats",
+    //     status: "error",
+    //     duration: 5000,
+    //     isClosable: true,
+    //     position: "bottom-left",
+    //   });
+    // }
+    // setChats(data);
+    // console.log(data);
+    // localStorage.setItem("AllChats", JSON.stringify(data));
   };
-
+  const allChats = useSelector((state) => state.chats); // setting the value of product Reducer to the data fetched from the api
   useEffect(() => {
+    dispatch(handleGetAllChats());
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
+    setChats(allChats);
+    console.log(allChats);
     // eslint-disable-next-line
   }, [fetchAgain]);
 

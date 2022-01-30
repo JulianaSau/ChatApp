@@ -4,8 +4,8 @@ import chatsReducer from "./chatsReducer";
 
 //combines all the reducers into one reducer
 const rootReducer = combineReducers({
-  userReducer,
-  chatsReducer,
+  users: userReducer,
+  chats: chatsReducer,
 });
 
 export default rootReducer;

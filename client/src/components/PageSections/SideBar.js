@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import photo from "../../assets/images/avatar.jpeg";
 import {
   FiChevronDown,
@@ -22,10 +22,18 @@ import CreateGroupChatModal from "../CreateGroupChat/CreateGroupChatModal";
 import useAuth from "../../utils/useAuth";
 import { getSender } from "../../config/ChatsLogics";
 import ChatLoading from "../Chats/ChatLoading";
+import { useSelector, useDispatch } from "react-redux";
+import { handleSelectedChat } from "../../redux/appActions/chatActions";
 
 function ChatBox({ chat, loggedUser }) {
+  const dispatch = useDispatch();
   return (
-    <HStack pl="2vw" py={1} _hover={{ bg: "#277DFF", cursor: "pointer" }}>
+    <HStack
+      pl="2vw"
+      py={1}
+      _hover={{ bg: "#277DFF", cursor: "pointer" }}
+      onClick={() => dispatch(handleSelectedChat(chat))}
+    >
       <Avatar size="xs" src={photo} alt="avatar" />
       <Text color="white" fontSize="12px">
         {!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.chatName}
@@ -39,10 +47,9 @@ const SideBar = ({ loggedUser }) => {
   const { onOpen, onClose, isOpen } = useDisclosure();
   const { getUser } = useAuth();
   const user = getUser();
-  const [chats, setChats] = useState([]);
-  useEffect(() => {
-    setChats(JSON.parse(localStorage.getItem("AllChats")));
-  }, []);
+  const chats = useSelector((state) => state.chats).allChats;
+  const selectedChat = useSelector((state) => state.chats).selectedChat;
+  console.log("selected Chat", selectedChat);
 
   console.log("chats", chats);
 
@@ -108,9 +115,9 @@ const SideBar = ({ loggedUser }) => {
           {chats ? (
             <Box>
               {chats
-                .filter((chat) => chat.isGroupChat === true)
+                ?.filter((chat) => chat.isGroupChat === true)
                 .map((chat) => (
-                  <ChatBox chat={chat} loggedUser={loggedUser} />
+                  <ChatBox key={chat._id} chat={chat} loggedUser={loggedUser} />
                 ))}
             </Box>
           ) : (
@@ -144,9 +151,9 @@ const SideBar = ({ loggedUser }) => {
           {chats ? (
             <Box>
               {chats
-                .filter((chat) => chat.isGroupChat === false)
+                ?.filter((chat) => chat.isGroupChat === false)
                 .map((chat) => (
-                  <ChatBox chat={chat} loggedUser={loggedUser} />
+                  <ChatBox key={chat._id} chat={chat} loggedUser={loggedUser} />
                 ))}
             </Box>
           ) : (
