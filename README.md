@@ -5,7 +5,7 @@
 - [Overview](#overview)
 - [Project Features](#project-features)
 - [Technologies](#technologies)
-- [Repo Setup](#repo-setup)
+<!-- - [Repo Setup](#repo-setup) -->
 <!-- - [Setting up the project](#setting-up-the-project) -->
 <!--   - [Frontend](#frontend) -->
 <!--     - [Build the client](#build-the-client) -->
