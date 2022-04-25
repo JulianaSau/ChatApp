@@ -46,7 +46,7 @@ const HomePage = ({ fetchAgain }) => {
   const allChats = useSelector((state) => state.chats); // setting the value of product Reducer to the data fetched from the api
   useEffect(() => {
     dispatch(handleGetAllChats());
-    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    setLoggedUser(JSON.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : {});
     fetchChats();
     setChats(allChats);
     console.log(allChats);

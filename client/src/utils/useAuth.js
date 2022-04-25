@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 export default function useAuth() {
-  const [chats, setChats] = useState(
-    JSON.parse(localStorage.getItem("AllChats") || [])
+  const [chats, setChats] = useState(localStorage.getItem("AllChats") ? 
+    JSON.parse(localStorage.getItem("AllChats")) : [])
   );
   const getChats = () => {
-    const chats = JSON.parse(localStorage.getItem("AllChats"));
+    const chats = localStorage.getItem("AllChats") ? 
+    JSON.parse(localStorage.getItem("AllChats")) : [];
     setChats(chats);
     return chats;
   };
@@ -16,7 +17,8 @@ export default function useAuth() {
   };
 
   const getToken = () => {
-    const userInfo = localStorage.getItem("userInfo");
+    const userInfo = localStorage.getItem("userInfo") ? 
+    JSON.parse(localStorage.getItem("userInfo")) : [];
     const userToken = JSON.parse(userInfo);
     return userToken?.token;
   };
