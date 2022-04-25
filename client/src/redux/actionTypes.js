@@ -15,3 +15,6 @@ export const REMOVE_USER_FROM_ROOM = "REMOVE_USER_FROM_ROOM";
 
 export const GET_ALL_CHATS = "GET_ALL_CHATS";
 export const SELECTED_CHAT = "SELECTED_CHAT";
+
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const GET_ALL_MESSAGES = "GET_ALL_MESSAGES";

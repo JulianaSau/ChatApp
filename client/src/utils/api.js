@@ -69,6 +69,26 @@ class APIServices {
   async removeUser(room_name) {
     return api.post(`/api/chat/groupremove`, room_name);
   }
+
+  async sendMessage(message_data) {
+    return api.post(
+      `/api/message`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+      message_data
+    );
+  }
+
+  async getAllMessages(chatId) {
+    return api.post(`/api/message/${chatId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
 
 const instance = new APIServices(); //an instance of axios that can be used globally

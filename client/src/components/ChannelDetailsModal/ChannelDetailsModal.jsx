@@ -47,9 +47,15 @@ const ChannelDetailsModal = ({ isOpen, onClose }) => {
                 <Text>MemberList</Text>
                 <List px={6} py={4}>
                   <Box as="span">{"   "}</Box>
-                  {selectedChat.users.map((user) => {
-                    return <UsersListTag key={user._id} user={user} />;
-                  })}
+                  {selectedChat.length > 0 ? (
+                    <>
+                      {selectedChat.users.map((user) => {
+                        return <UsersListTag key={user._id} user={user} />;
+                      })}
+                    </>
+                  ) : (
+                    <Text>Error</Text>
+                  )}
                 </List>
               </TabPanel>
             </TabPanels>
