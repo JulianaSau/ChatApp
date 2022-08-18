@@ -1,12 +1,16 @@
 import { useState } from "react";
 
 export default function useAuth() {
-  const [chats, setChats] = useState(localStorage.getItem("AllChats") ? 
-    JSON.parse(localStorage.getItem("AllChats")) : [])
+  const [chats, setChats] = useState(
+    localStorage.getItem("AllChats")
+      ? JSON.parse(localStorage.getItem("AllChats"))
+      : []
   );
+
   const getChats = () => {
-    const chats = localStorage.getItem("AllChats") ? 
-    JSON.parse(localStorage.getItem("AllChats")) : [];
+    const chats = localStorage.getItem("AllChats")
+      ? JSON.parse(localStorage.getItem("AllChats"))
+      : [];
     setChats(chats);
     return chats;
   };
@@ -17,10 +21,10 @@ export default function useAuth() {
   };
 
   const getToken = () => {
-    const userInfo = localStorage.getItem("userInfo") ? 
-    JSON.parse(localStorage.getItem("userInfo")) : [];
-    const userToken = JSON.parse(userInfo);
-    return userToken?.token;
+    const userInfo = localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : [];
+    return userInfo?.token;
   };
 
   const [token, setToken] = useState(getToken());
@@ -37,7 +41,9 @@ export default function useAuth() {
 
   // return the user from the local storage
   const getUser = () => {
-    const user = JSON.parse(localStorage.getItem("userInfo") || null);
+    const user = localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : [];
     return user;
   };
 

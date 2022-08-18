@@ -3,15 +3,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 
-const userInfoFromStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo"))
-  : null;
+// const userInfoFromStorage = localStorage.getItem("userInfo")
+//   ? JSON.parse(localStorage.getItem("userInfo"))
+//   : null;
 
-const initialState = {
-  userLogin: {
-    userInfo: userInfoFromStorage,
-  },
-};
+const initialState = {};
 
 // A thunk in this context is a function that can be dispatched to perform async
 // activity and can dispatch actions and read state.

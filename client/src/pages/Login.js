@@ -36,7 +36,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken } = useAuth();
+  // const { setToken } = useAuth();
   const {
     handleSubmit,
     handleChange,
@@ -58,7 +58,7 @@ const Login = () => {
       },
     },
 
-    onSubmit: async () => {
+    onSubmit: async (e) => {
       setLoading(true);
       if (!user.email || !user.password) {
         toast({
@@ -100,7 +100,8 @@ const Login = () => {
           isClosable: true,
           position: "bottom",
         });
-        setToken(data);
+        // setToken(data);
+        localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
         navigate("/home");
       } catch (error) {

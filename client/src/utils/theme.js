@@ -25,6 +25,8 @@ export const theme = extendTheme({
         color: "#8B8B8B",
       },
     },
+    config: {
+      initialColorMode: "light",
+    },
   },
-  
 });

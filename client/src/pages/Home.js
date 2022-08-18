@@ -10,8 +10,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleGetAllChats } from "../redux/appActions/chatActions";
 
 const HomePage = ({ fetchAgain }) => {
-  const { getUser, token } = useAuth();
-  const user = getUser();
+  // const { getUser, token } = useAuth();
+  const user = localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : [];
+  const token = localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null;
   const [loggedUser, setLoggedUser] = useState();
   const [chats, setChats] = useState();
 
@@ -25,7 +30,7 @@ const HomePage = ({ fetchAgain }) => {
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.token}`,
         },
       };
       const { data } = await axios.get("/api/chat", config);
@@ -46,7 +51,11 @@ const HomePage = ({ fetchAgain }) => {
   const allChats = useSelector((state) => state.chats); // setting the value of product Reducer to the data fetched from the api
   useEffect(() => {
     dispatch(handleGetAllChats());
-    setLoggedUser(JSON.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : {});
+    setLoggedUser(
+      localStorage.getItem("userInfo")
+        ? JSON.parse(localStorage.getItem("userInfo"))
+        : {}
+    );
     fetchChats();
     setChats(allChats);
     console.log(allChats);
