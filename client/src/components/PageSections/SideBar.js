@@ -116,7 +116,7 @@ const SideBar = ({ loggedUser }) => {
             <Box>
               {chats
                 ?.filter((chat) => chat.isGroupChat === true)
-                .map((chat) => (
+                ?.map((chat) => (
                   <ChatBox key={chat._id} chat={chat} loggedUser={loggedUser} />
                 ))}
             </Box>

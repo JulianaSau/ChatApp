@@ -5,7 +5,6 @@ import TopBar from "../components/PageSections/TopBar/TopBar";
 import ChatsPanel from "../components/PageSections/ChatsPanel";
 import MessageBoard from "../components/MessageBoard/MessageBoard";
 import axios from "axios";
-import useAuth from "../utils/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { handleGetAllChats } from "../redux/appActions/chatActions";
 

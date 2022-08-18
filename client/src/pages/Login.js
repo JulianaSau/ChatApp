@@ -20,7 +20,6 @@ import photo from "../assets/images/image.jpg";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../utils/useAuth";
 import useForm from "../utils/useForm";
 
 const style = {
