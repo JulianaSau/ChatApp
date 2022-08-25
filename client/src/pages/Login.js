@@ -185,13 +185,13 @@ const Login = () => {
               variant="solid"
               colorScheme="red"
               width="100%"
-              onClick={() => {
+              onClick={(e) => {
                 setEmail("guest@example.com");
                 setPassword("123456789");
                 user.email = "guest@example.com";
                 user.password = "123456789";
                 console.log(user.email, user.password);
-                handleSubmit();
+                handleSubmit(e);
               }}
             >
               Log In as Guest User
